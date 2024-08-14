@@ -1,11 +1,17 @@
 {
   "name": "n3xus-archive",
   "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "description": "",
-  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "start": "concurrently \"npm --prefix client start\" \"npm --prefix server start\"",
+    "client": "npm --prefix client install && npm --prefix client start",
+    "server": "npm --prefix server install && npm --prefix server start"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +21,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
