@@ -1,16 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-// Import all pages
-import HomePage from './pages/homePage';
-import NotePage from './pages/notePage'; // Example for another page
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/notes/:id" element={<NotePage />} /> {/* Example route */}
       </Routes>
     </Router>
   );

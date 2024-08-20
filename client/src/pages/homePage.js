@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getNotes } from '../services/api';
 
-function HomePage() {
-  const [notes, setNotes] = useState([]);
+import './HomePage.css';
 
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await axios.get('/api/notes');
-        setNotes(response.data);
-      } catch (error) {
-        console.error('Error fetching notes:', error);
-      }
-    };
+import Note from '../components/Note';
+import NoteModal from '../components/NoteModal';
 
-    fetchNotes();
-  }, []);
+const HomePage = () => {
+    // For handling modal triggerings
+    const [selectedNote, setSelectedNote] = useState(null);
 
-  return (
-    <div>
-      <h1>Notes</h1>
-      <ul>
-        {notes.map(note => (
-          <li key={note._id}>{note.description}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+    // Fetching Notes
+    const [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        getNotes().then(response => {
+            setNotes(response.data);
+        });
+    }, []);
+
+    // Displaying Webpage
+    return (
+        <div>
+            <div className="home-container">
+                <h1>Welcome to Nexus!</h1>
+            </div>
+            <div>
+                <div className="notes-list">
+                    {notes.map((note) => (
+                    <Note key={note.noteUID} note={note} onClick={() => setSelectedNote(note)} />
+                    ))}
+                </div>
+                <NoteModal note={selectedNote} onClose={() => setSelectedNote(null)} />
+            </div>
+        </div>
+    );
+};
 
 export default HomePage;

@@ -1,24 +1,19 @@
-/*
-app.js
-
-
-*/
-
 const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
-// Middleware
-app.use(bodyParser.json());
+const app = express();
+
 app.use(cors());
+app.use(bodyParser.json());
 
-// Root route
+// Example root route
 app.get('/', (req, res) => {
-    res.send('Welcome to the API');
-})
+    res.send('API is running...');
+});
 
-// Routes
-app.use('/api/notes', require('./routes/noteRoutes')); //Mount all noteRoutes to '/api/notes'
+// Import and use your routes here
+const noteRoutes = require('./routes/noteRoutes');
+app.use('/api/notes', noteRoutes);
 
 module.exports = app;
