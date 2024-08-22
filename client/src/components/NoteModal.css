@@ -4,14 +4,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #50514f85;
+    background: #57575785;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .modal-content {
-    background: #FFDCCC;
+    background: #A57982;
     padding: 20px;
     border-radius: 5px;
     max-width: 500px;

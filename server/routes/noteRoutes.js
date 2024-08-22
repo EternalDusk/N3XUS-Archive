@@ -4,6 +4,7 @@ const noteController = require('../controllers/noteController');
 
 // Routes for notes
 router.get('/', noteController.getNotes); //Lists all notes
+router.get('/recent', noteController.getRecentNotes); // Lists the 10 most recent notes
 router.post('/', noteController.createNote); //Creates a new note
 router.get('/:id', noteController.getNoteById); //Grabs a note by it's ID
 router.put('/:id', noteController.updateNote); //Updates a note by it's ID with the data in body

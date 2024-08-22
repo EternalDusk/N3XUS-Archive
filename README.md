@@ -2,66 +2,9 @@
 # MERN Stack Resource Application
 ### Project Nexus
 
-## Installation
-1) Clone the repository
-2) Create a MongoDB Database using the community server or using atlas
--  https://www.mongodb.com/try/download/community
-3) Run `npm install` to install necessary packages
+## Installation (not completed)
+We're currently working on development. Once we're finished, we'll containerize this in docker, as well as add standalone deployment steps.
 
-## Notes
-**Notes Collection Schema**
-{
-  "NoteUID": "string",
-  "TopicUID": "string",
-  "SourceName": "string",
-  "SourceURL": "string",
-  "SourceType": "string",
-  "Description": "string",
-  "PostedBy": "string",
-  "Upvotes": "int",
-  "Downvotes": "int",
-  "Comments": [
-    {
-      "CommentID": "string",
-      "UserID": "string",
-      "CommentText": "string",
-      "Timestamp": "date"
-    }
-  ]
-}
-
-
-**Users Collection Schema**
-{
-  "UserID": "int",
-  "Username": "string",
-  "Email": "string",
-  "PasswordHash": "string",
-  "DiscordID": "string",  // Optional
-  "UpvotedNotes": ["NoteUID"],
-  "DownvotedNotes": ["NoteUID"],
-  "Collections": [
-    {
-      "CollectionID": "string",
-      "CollectionName": "string",
-      "Description": "string",
-      "Notes": ["NoteUID"]
-    }
-  ]
-}
-
-## ToDo
-update user note with UserID
-if no notes or users exist, create a note with name and description "default"
-  and user of name "default"
-
-Users will show the notes/resources they have made, but add pagination to only show the first 10, then the next 10
-  Add caching to this mechanism
-
-Follow users + follow collections
-
-Updates when editing/adding schema
-models -> controllers -> routes
 
 ## Versions
 
@@ -70,3 +13,16 @@ v0.0.1a - Basic Functionality
 
 v0.0.2a - Better routes
 - Provided routes and new model schema for notes and users/collections
+
+v0.0.3a - Refactor 1
+- Frontend/backend are in their own folders and ran with "concurrently" from the main directory.
+- Docker is not fully set up yet, please don't try to docker-compose!
+
+v0.0.4a - Updated topics system
+- New dependency added: font-awesome
+- Reworked the backend to use an array of strings for topics
+- Removed unecessary UIDs that are already handled by mongoDB
+- Added modal windows
+- Updated a LOT of styling (cries in css)
+- Added route to get the 10 (or X) most recent notes
+- Comments no longer have ids and are just stored in an array, accessed via index

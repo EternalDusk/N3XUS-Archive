@@ -1,5 +1,17 @@
 const Note = require('../models/note');
 
+exports.getRecentNotes = async (req, res) => {
+    try{
+        const limit = parseInt(req.query.limit) || 10;
+
+        const notes = await Note.find().sort({ createdAt: -1 }).limit(limit);
+        res.json(notes);
+
+    } catch (err) {
+        res.status(500)/json({ error: err.message });
+    }
+}
+
 exports.getNotes = async (req, res) => {
     try {
         const notes = await Note.find();
@@ -11,9 +23,8 @@ exports.getNotes = async (req, res) => {
 
 exports.createNote = async (req, res) => {
     try {
-        const { noteUID, topicUID, sourceName, sourceURL, sourceType, description, postedBy } = req.body;
+        const { topicUID, sourceName, sourceURL, sourceType, description, postedBy } = req.body;
         const newNote = new Note({
-            noteUID,
             topicUID,
             sourceName,
             sourceURL,

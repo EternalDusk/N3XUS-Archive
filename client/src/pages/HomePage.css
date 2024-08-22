@@ -1,13 +1,38 @@
 body{
-  background-color: #50514F;
+  background-color: #3A405A;
   margin: 20px;
+  color: #FFFDFD;
 }
 
 .home-container {
     text-align: center;
   }
   
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-bar input{
+    padding: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    border: none;
+  }
+
+  .search-container-button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .faIcon {
+    padding: 6px;
+  }
+  
   h1 {
-    color: #FFDCCC;
+    color: #CBD2D0;
   }
   

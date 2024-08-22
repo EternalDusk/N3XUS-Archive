@@ -4,8 +4,12 @@ import './Note.css';
 function Note({ note, onClick}){
     return (
         <div className='note-card' onClick={onClick}>
-            <h2>{note.sourceName}</h2>
-            <p>{note.description}</p>
+            <p>
+                <span className='note-title'>{note.sourceName}</span>
+                <span className='note-topic'>{note.topicUID.join(', ')}</span>
+            </p>
+            <br/>
+            <p className='note-description'>{note.description}</p>
         </div>
     );
 }

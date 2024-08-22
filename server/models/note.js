@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-    commentID: {
-        type: String,
-        required: true,
-        unique: true
-    },
     userID: {
         type: String,
         required: true
@@ -21,13 +16,8 @@ const commentSchema = new mongoose.Schema({
 });
 
 const noteSchema = new mongoose.Schema({
-    noteUID: {
-        type: String,
-        required: true,
-        unique: true
-    },
     topicUID: {
-        type: String,
+        type: [String],
         required: true
     },
     sourceName: {
