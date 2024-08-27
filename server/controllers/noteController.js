@@ -1,5 +1,28 @@
 const Note = require('../models/note');
 
+
+exports.getNotesByTopic = async (req, res) => {
+    try {
+        const { topicUID } = req.query;
+
+        if (!topicUID) {
+            return res.status(400).json({ error: 'Topic UID is required' });
+        }
+
+        // Query the notes by topicUID field
+        const notes = await Note.find({ topicUID: { $in: topicUID } });
+
+        if (notes.length === 0) {
+            return res.status(404).json({ message: 'No notes found for this topic' });
+        }
+
+        res.json(notes);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+
 exports.getRecentNotes = async (req, res) => {
     try{
         const limit = parseInt(req.query.limit) || 10;

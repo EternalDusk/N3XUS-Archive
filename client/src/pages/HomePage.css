@@ -1,38 +1,32 @@
 body{
-  background-color: #3A405A;
+  background-color: #ac8e69;
   margin: 20px;
-  color: #FFFDFD;
+  color: #5c3c2a;
+  font-family: 'PageFont';
 }
 
-.home-container {
-    text-align: center;
-  }
-  
-  .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+@font-face {
+  font-family: 'PageFont';
+  src: local('PageFont'), url('../fonts/work-sans.regular.ttf'), format('truetype');
+}
 
-  .search-bar input{
-    padding: 6px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 17px;
-    border: none;
-  }
+.container {
+  display: flex;
+}
 
-  .search-container-button {
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
+.main-column {
+  flex: 3;
+  width: 70%;
+  padding: 20px;
+}
 
-  .faIcon {
-    padding: 6px;
-  }
-  
-  h1 {
-    color: #CBD2D0;
-  }
-  
+.side-column {
+  flex: 1;
+  width: 10%;
+  height: fit-content;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 50px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}

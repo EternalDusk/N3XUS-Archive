@@ -26,3 +26,16 @@ v0.0.4a - Updated topics system
 - Updated a LOT of styling (cries in css)
 - Added route to get the 10 (or X) most recent notes
 - Comments no longer have ids and are just stored in an array, accessed via index
+
+v 0.0.5a - Topics is now it's own database!
+- Added more styling (i hate working with display tags)
+- Added 404 page
+- Added package requirement: react-router-dom
+- Moved header into own component
+- Added fonts (not pushed with codebase due to licensing)
+- Added topics api controller (getRecentTopics, getTopicByUID, createTopic, updateTopic) w/ routes
+- Added topics page w/ side knowledge panel
+- Added getNotesByTopic in notes api for topics page
+- Notes and Topics both now have updatedAt and createdAt fields
+- Notes and Topics now have their indexing explicitely specified in the schema (because apparently that's something you can do and I didn't know that lol)
+- Altered noteRoutes to be more intuitive for api calling

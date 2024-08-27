@@ -49,6 +49,9 @@ const noteSchema = new mongoose.Schema({
         default: 0
     },
     comments: [commentSchema]
-});
+}, { timestamps: true}); // enables createdAt and updatedAt fields
+
+// Compound index on topicUID and upvotes
+noteSchema.index({ topicUID: 1, upvotes: -1 });  // 1 for ascending, -1 for descending
 
 module.exports = mongoose.model('Note', noteSchema);

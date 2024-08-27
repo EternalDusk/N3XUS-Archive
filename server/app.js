@@ -12,8 +12,12 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
-// Import and use your routes here
+// Import and use routes
+// notes
 const noteRoutes = require('./routes/noteRoutes');
 app.use('/api/notes', noteRoutes);
+// topics
+const topicRoutes = require('./routes/topicRoutes');
+app.use('/api/topic', topicRoutes);
 
 module.exports = app;
