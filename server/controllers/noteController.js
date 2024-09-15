@@ -1,5 +1,74 @@
 const Note = require('../models/note');
 
+let recentNotesCache = [];
+
+// Get recent notes with caching
+exports.getRecentNotes = async (req, res) => {
+    try {
+        let limit = parseInt(req.query.limit);
+        if (!limit || limit <= 0) {
+            limit = null; // No limit if limit is 0, null, or undefined
+        }
+
+        // If cache has enough notes, return from cache
+        if (recentNotesCache.length >= 10) {
+            const notesToReturn = limit ? recentNotesCache.slice(0, limit) : recentNotesCache;
+            return res.status(200).json(notesToReturn);
+        }
+
+        // If cache has fewer than 10 items, fetch from the database
+        const notes = await Note.find().sort({ createdAt: -1 }).limit(limit || 10);
+
+        // Update the cache if fetching the most recent notes
+        if (notes.length > 0) {
+            recentNotesCache = notes.slice(0, 10); // Cache only the 10 most recent notes
+        }
+
+        res.status(200).json(notes);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+// Function to update the recentNotesCache manually when a new note is created
+exports.updateRecentNotesCache = async () => {
+    try {
+        const notes = await Note.find().sort({ createdAt: -1 }).limit(10);
+        recentNotesCache = notes;
+    } catch (err) {
+        console.error('Failed to update recentNotesCache:', err.message);
+    }
+};
+
+// Create a new note and update cache
+exports.createNote = async (req, res) => {
+    try {
+        const { topicUID, sourceName, sourceURL, sourceType, description, postedBy } = req.body;
+
+        const newNote = new Note({
+            topicUID,
+            sourceName,
+            sourceURL,
+            sourceType,
+            description,
+            postedBy
+        });
+
+        const savedNote = await newNote.save();
+
+        // Update the recentNotesCache
+        recentNotesCache.unshift(savedNote); // Add the new note to the start of the cache
+        if (recentNotesCache.length > 10) {
+            recentNotesCache.pop(); // Remove the oldest note if the cache exceeds 10 items
+        }
+
+        res.status(201).json(savedNote);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+// Other CRUD operations remain the same
 
 exports.getNotesByTopic = async (req, res) => {
     try {
@@ -9,7 +78,6 @@ exports.getNotesByTopic = async (req, res) => {
             return res.status(400).json({ error: 'Topic UID is required' });
         }
 
-        // Query the notes by topicUID field
         const notes = await Note.find({ topicUID: { $in: topicUID } });
 
         if (notes.length === 0) {
@@ -22,41 +90,10 @@ exports.getNotesByTopic = async (req, res) => {
     }
 };
 
-
-exports.getRecentNotes = async (req, res) => {
-    try{
-        const limit = parseInt(req.query.limit) || 10;
-
-        const notes = await Note.find().sort({ createdAt: -1 }).limit(limit);
-        res.json(notes);
-
-    } catch (err) {
-        res.status(500)/json({ error: err.message });
-    }
-}
-
 exports.getNotes = async (req, res) => {
     try {
         const notes = await Note.find();
         res.json(notes);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-};
-
-exports.createNote = async (req, res) => {
-    try {
-        const { topicUID, sourceName, sourceURL, sourceType, description, postedBy } = req.body;
-        const newNote = new Note({
-            topicUID,
-            sourceName,
-            sourceURL,
-            sourceType,
-            description,
-            postedBy
-        });
-        const savedNote = await newNote.save();
-        res.json(savedNote);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

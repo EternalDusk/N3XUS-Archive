@@ -1,42 +1,13 @@
-body{
-    background-color: #ac8e69;
-    margin: 20px;
-    color: #5c3c2a;
-    font-family: 'PageFont';
-}
-
-
-.container {
-    display: flex;
-}
-
-.main-column {
-    flex: 3;
-    width: 70%;
-    padding: 20px;
-}
-
-.side-column {
-    flex: 1;
-    width: 10%;
-    height: fit-content;
-    margin-right: 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-}
 
 .topicTitle {
-    color: #68270c;
     font-family: PageFont;
-    font-size: 35px;
+    font-size: 30px;
     margin: 0;
-    text-align: center;
+    padding: 0;
 }
 
 .notesTitle {
-    color: #68270c;
     font-family: PageFont;
     margin: 0;
-    text-align: center;
+    padding-left: 20px;
 }

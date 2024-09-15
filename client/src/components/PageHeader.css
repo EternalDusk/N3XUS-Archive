@@ -1,17 +1,85 @@
+/* CSS for ALL pages */
+:root {
+    --primary-color: #39393A;
+    --secondary-color: #E6E6E6;
+    --tertiary-color: #5D576B;
+}
 
-@font-face {
-    font-family: 'DavinciFont';
-    src: local('DavinciFont'), url('../fonts/Quentin.otf'), format('opentype');
+body{
+    background-color: var(--primary-color);
+    margin: 20px;
+    color: var(--secondary-color);
+    font-family: 'PageFont';
+}
+
+h1 {
+    color: var(--primary-color);
+    font-family: DavinciFont;
+    font-size: 60px;
+    margin: 0;
+}
+
+h2 {
+    color: var(--secondary-color);
+}
+
+h4 {
+    margin: 20px;
+    margin-bottom: 0px;
 }
 
 a {
-    color: #68270c;
+    color: var(--secondary-color);
     text-decoration: none;
 }
-  
+
+li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'DavinciFont';
+    src: local('DavinciFont'), url('../fonts/Peristiwa.otf'), format('opentype');
+}
+
+@font-face {
+    font-family: 'PageFont';
+    src: local('PageFont'), url('../fonts/work-sans.regular.ttf'), format('truetype');
+}
+
+/* CSS for Page Layouts */
+
+.container {
+    display: flex;
+}
+
+.main-column {
+    flex: 2.25;
+    width: 60%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px solid var(--tertiary-color);
+}
+
+.side-column {
+    flex: 1;
+    height: fit-content;
+    padding: 20px;
+}
+
+/* Applies to PageHeader */
+
 .home-container {
+    background-color: var(--primary-color);
     text-align: center;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--tertiary-color);
+    position: sticky;
+    z-index: 500;
+    top: 0px;
 }
 
 .search-bar {
@@ -26,21 +94,18 @@ a {
     margin-bottom: 10px;
     font-size: 17px;
     border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .search-container-button {
     border: none;
     cursor: pointer;
     font-size: 16px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .faIcon {
     padding: 6px;
-}
-
-h1 {
-    color: #68270c;
-    font-family: DavinciFont;
-    font-size: 80px;
-    margin: 0;
 }

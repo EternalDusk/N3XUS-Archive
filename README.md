@@ -27,7 +27,7 @@ v0.0.4a - Updated topics system
 - Added route to get the 10 (or X) most recent notes
 - Comments no longer have ids and are just stored in an array, accessed via index
 
-v 0.0.5a - Topics is now it's own database!
+v 0.0.5a - Added topics pages
 - Added more styling (i hate working with display tags)
 - Added 404 page
 - Added package requirement: react-router-dom

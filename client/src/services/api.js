@@ -10,7 +10,8 @@ export const createNote = (note) => api.post('/notes', note);
 
 export const getNotesByTopic = (topicUID) => api.get(`/notes/by-topic?topicUID=${topicUID}`);
 
-export const getTopics = () => api.get('/topic/fetchAll');
+export const getRecentTopics = (limit = 10) => api.get(`/topic/fetchRecent?limit=${limit}`);
+export const getAllTopics = () => api.get(`/topic/fetchAll`);
 export const getTopicByUID = (topicUID) => api.get(`/topic/fetch/${topicUID}`);
 
 export default api;

@@ -40,9 +40,6 @@ const  PageHeader = () => {
                 />
                 <button className='search-container-button' onClick={handleButtonClick}><FontAwesomeIcon icon={faSearch} className='faIcon' /></button>
             </div>
-
-            <h4>The Library is a community-curated database of resources and websites on many different topics.</h4>
-            <h4>Follow your inner polymath!</h4>
         </div>
     );
 }

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 // API
-import { getRecentNotes, getTopics } from '../services/api';
+import { getRecentNotes, getRecentTopics } from '../services/api';
 
 // Styling
 import './HomePage.css';
@@ -23,7 +23,7 @@ const HomePage = () => {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
-        getTopics().then(response => {
+        getRecentTopics(10).then(response => {
             setTopics(response.data);
         });
     }, []);
