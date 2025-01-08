@@ -17,15 +17,22 @@ Docker setup currently in development, dockerfiles may not be properly set up ye
 ## To-Do/In Progress
 
 - Fix nodemon needing to install globally
-- User authentications
+- User authentication/profiles
     - Add note submission page for users
 - User interactions
-    - Notes
+    - Note comments
     - Resource voting system
-    - Note Comments
-- Admin page for note and task CRUD
+    - User-created note collections (groups of notes)
+        - Collections voting and commenting
+        - Collection Collaboration
+- Admin page for note and topic CRUD
 - Resource base url typing (eg: showing reddit symbol when url base is reddit.com)
 - Change fonts to openly licensed fonts
+
+
+## Planned Future Features
+- Implement Redis for caching when slowdowns occur
+- Comment filtering via sentiment analysis
 
 
 ## Versions
