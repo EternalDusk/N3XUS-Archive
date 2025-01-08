@@ -68,7 +68,6 @@ exports.createNote = async (req, res) => {
     }
 };
 
-// Other CRUD operations remain the same
 
 exports.getNotesByTopic = async (req, res) => {
     try {

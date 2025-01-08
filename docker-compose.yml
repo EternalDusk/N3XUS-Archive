@@ -1,4 +1,3 @@
-version: '3'
 services:
   backend:
     build: ./server
@@ -8,6 +7,7 @@ services:
       - ./server:/usr/src/app
     environment:
       NODE_ENV: development
+      MONGO_URI: mongodb://mongo:27017/nexusdb
 
   frontend:
     build: ./client
@@ -17,3 +17,13 @@ services:
       - ./client:/usr/src/app
     environment:
       NODE_ENV: development
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db 
+
+volumes:
+  mongo-data: # Named volume for MongoDB persistence

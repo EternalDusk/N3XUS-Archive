@@ -2,6 +2,14 @@ const app = require('./app');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+
+console.log('Environment:', process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'docker') {
+  require('dotenv').config({ path: './.env.docker' });
+} else {
+  require('dotenv').config({ path: './.env.local' });
+}
+
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 

@@ -1,9 +1,31 @@
+# Project Nexus
 
-# MERN Stack Resource Application
-### Project Nexus
+Project Nexus is a customized search engine project, meant to aggregate resources, links, and allow users to provide feedback and comment on each resource.
 
-## Installation (not completed)
-We're currently working on development. Once we're finished, we'll containerize this in docker, as well as add standalone deployment steps.
+
+## Installation (not ready for use)
+
+Docker setup currently in development, dockerfiles may not be properly set up yet.
+
+1) Clone repo
+2) In the N3XUS-ARCHIVE root directory - run `npm run install-all`
+3) Inside of the server directory - run `npm install nodemon -g` to install nodemon globally (need to implement a fix for this)
+4) Download and/or setup a MongoDB instance
+    To run it locally, download and install MongoDB from [here](https://www.mongodb.com/try/download/community)
+
+
+## To-Do/In Progress
+
+- Fix nodemon needing to install globally
+- User authentications
+    - Add note submission page for users
+- User interactions
+    - Notes
+    - Resource voting system
+    - Note Comments
+- Admin page for note and task CRUD
+- Resource base url typing (eg: showing reddit symbol when url base is reddit.com)
+- Change fonts to openly licensed fonts
 
 
 ## Versions
@@ -39,3 +61,7 @@ v 0.0.5a - Added topics pages
 - Notes and Topics both now have updatedAt and createdAt fields
 - Notes and Topics now have their indexing explicitely specified in the schema (because apparently that's something you can do and I didn't know that lol)
 - Altered noteRoutes to be more intuitive for api calling
+
+v 0.0.6a - Preliminary Docker Setup
+- Added updated docker-compose.yml and Dockerfiles to client and server folders
+- .env.docker and .env.local now select based on environment (local mongodb setup and docker mongodb setup)

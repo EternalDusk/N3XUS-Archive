@@ -45,7 +45,7 @@ li a {
 
 @font-face {
     font-family: 'PageFont';
-    src: local('PageFont'), url('../fonts/work-sans.regular.ttf'), format('truetype');
+    src: local('PageFont'), url('../fonts/WorkSans-Regular.ttf'), format('truetype');
 }
 
 /* CSS for Page Layouts */
